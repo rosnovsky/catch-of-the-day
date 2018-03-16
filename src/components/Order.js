@@ -13,10 +13,11 @@ class Order extends Component {
             return <li key ={key}>Sorry, {fish ? fish.name : "this fish"} is sold out ☹️</li>
         }
         return (
-            <li key={key}   >
+            <li key={key}>
                 {count} lbs. {fish.name}
                 
                 {formatPrice(count * fish.price)}
+                <button onClick={() => this.props.deleteFromOrder(key)}>&times;</button>
             </li>
         )}
 
@@ -35,7 +36,7 @@ class Order extends Component {
         return (
             <div className="order-wrap">
                 <h2>Order</h2>
-                <ul className="order"   >
+                <ul className="order">
                     {orderIds.map(this.renderOrder)}   
                 </ul>
                 <div className="total">
