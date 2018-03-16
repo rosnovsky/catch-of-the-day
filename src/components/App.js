@@ -53,6 +53,24 @@ class App extends Component {
 
     }
 
+    updateFish = (key, updatedFish) => {
+        const fishes = {...this.state.fishes};
+        fishes[key] = updatedFish;
+        this.setState({ fishes })
+    }
+
+    deleteFish = (key) => {
+        const fishes = {...this.state.fishes};
+        fishes[key] = null;
+        this.setState({ fishes })
+    }
+
+    deleteFromOrder = (key) => {
+        const order = {...this.state.order};
+        delete order[key];
+        this.setState({ order })
+    }
+
     render() {
         return (
             <div className="catch-of-the-day">
@@ -62,8 +80,13 @@ class App extends Component {
                         {Object.keys(this.state.fishes).map(key => <Fish addToOrder={this.addToOrder} details={this.state.fishes[key]} key={key} index={key}>{key}</Fish>)}
                     </ul>
                 </div>
-                <Order fishes={this.state.fishes} order={this.state.order}/>
-                <Inventory addFish={this.addFish} loadSampleFishes={this.loadSampleFishes}/>
+                <Order fishes={this.state.fishes} order={this.state.order} deleteFromOrder={this.deleteFromOrder}/>
+                <Inventory 
+                    addFish={this.addFish} 
+                    loadSampleFishes={this.loadSampleFishes} 
+                    fishes={this.state.fishes}
+                    updateFish={this.updateFish} 
+                    deleteFish ={this.deleteFish} />
             </div>   
         )}
     }
