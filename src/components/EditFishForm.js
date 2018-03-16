@@ -20,7 +20,7 @@ class EditFishForm extends Component {
                 </select>
                 <textarea name="description" onChange={this.handleChange} value={this.props.fish.description} />
                 <input name="image" type="text" onChange={this.handleChange} value={this.props.fish.image} />
-                <button onClick={() => this.props.deleteFish(this.props.index)}>❌ Remove Fish</button>
+                <button onClick={() => this.props.deleteFish(this.props.index)}>&times; Remove Fish</button>
             </div>
         )
     }
