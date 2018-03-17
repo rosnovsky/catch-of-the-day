@@ -1,11 +1,11 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types"; 
 import Inventory from "./Inventory";
 import Order     from "./Order";
 import Header    from "./Header";
 import Fish    from "./Fish";
 import sampleFishes from "../sample-fishes";
 import base from "../base";
-import PropTypes from "prop-types"; 
 
 class App extends Component {
     state = {
@@ -91,7 +91,8 @@ class App extends Component {
                     loadSampleFishes={this.loadSampleFishes} 
                     fishes={this.state.fishes}
                     updateFish={this.updateFish} 
-                    deleteFish ={this.deleteFish} />
+                    deleteFish ={this.deleteFish}
+                    storeId = {this.props.match.params.storeId} />
             </div>   
         )}
     }
